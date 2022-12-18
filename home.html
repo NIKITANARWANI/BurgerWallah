@@ -1,0 +1,55 @@
+<html>
+	<head>
+	<title>Burger Wallah</title>
+	<style>
+	*{font-size:40px;font-family:Arial;}
+	body{background-color:yellow;}
+	</style>
+	<script>
+	function order()
+	{
+		event.preventDefault();
+		let name=document.getElementById("name")
+		let ans=document.getElementById("ans")
+		let small=document.getElementById("small")
+		let medium=document.getElementById("medium")
+		let large=document.getElementById("large")
+		if(name.value.trim().length==0)
+		{
+			alert("name is Empty")
+			name.focus()
+			ans.innerHTML=""
+			return;
+		}
+		if(! name.value.match(/^[A-Za-z ]+$/))
+		{
+			alert("Invalid Name");
+			name.focus()
+			ans.innerHTML=""
+			return;
+		}
+		let cs=""
+		if(small.checked)			cs="Small"
+		else if(medium.checked)		cs="Medium"
+		else						cs="Large"
+		let msg = "Name: "+name.value+ " Burger Ordered: "+cs;
+		ans.innerHTML=msg;
+	}
+	</script>
+	</head>
+	<body>
+	<center>
+	<h1>Burger Wallah</h1>
+	<form onsubmit= "return order()">
+	<input type="text" placeholder="Enter your name" id="name"/>
+	<br/><br/>
+	<input type="radio" name="s" value="small" id="small">Small
+	<input type="radio" name="s" value="medium" id="medium">Medium
+	<input type="radio" name="s" value="large" id="large" checked=true>large
+	<br/><br/>
+	<input type="submit" value ="Place Order" />
+	</form>
+	<h1 id="ans"></h1>
+	</center>
+	</body>
+</html>
